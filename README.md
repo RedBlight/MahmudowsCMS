@@ -3,9 +3,9 @@ A very simple and primitive content management system I made very very earlier, 
 
 ## How to use?
 1) Put all the files in your server.
-2) Open "admin.php", follow the instructions there. You need to write down FTP host, username, password and root directory.
-3) Change the password in "MCMSR/secures/pass.txt". Yep, it's stored as a plaintext :), but it's permissions are gonna be set to prevent anyone looking at it, except the server admin.
-4) Now you can go to "yoursite.com/admin.php" and login with the password.
+2) Using a text editor, edit "admin.php", follow the instructions there. You need to write down FTP host, username, password and root directory.
+3) Again, using a text editor, change the password in "MCMSR/secured/pass.txt". *Yep, it's stored as a plaintext :), but it's permissions are gonna be set to prevent anyone looking at it, except the server admin.*
+4) Now you can go to "yoursite.com/admin.php" in the browser and login with the password.
 5) In the admin panel, you can add 1st level categories, 2nd level sub-categories to them, and pages to the sub categories. You can delete or modify existing ones. Oh, you can also change the password from there.
 6) Changes will appear immediately in "yoursite.com".
 7) "index.php" and other images, .css files, etc., can be modified manually to change the appearance of the site.
