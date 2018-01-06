@@ -1,0 +1,169 @@
+a:link {
+	color: #F1A21F;
+	text-decoration:none;
+}
+a:visited {
+	color: #F1A21F;
+	text-decoration:none;
+}
+a:hover {
+	color: #FFCA51;
+	text-decoration:none;
+}
+a:active {
+	color: #F1A21F;
+	text-decoration:none;
+}
+body{
+	text-align: center;
+	margin: 0px;
+	padding: 0px;
+	background-image: url(/MCMSR/img/seffaf.png);
+	background-repeat: repeat-x;
+	background-color: #000000;
+	color: #F1A21F;
+}
+.topMenu{
+	margin: 0px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-weight: bold;
+	font-size: 17px;
+	background-color: #000000;
+	padding-top: 4px;
+	padding-right: 0px;
+	padding-bottom: 4px;
+	padding-left: 0px;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	text-align: center;
+	border-width: 2px;
+	border-top-color: #000000;
+	border-bottom-color: #F1A21F;
+	color: #F1A21F;
+}
+.topButon{
+	border-left-width: 1px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-right: 3px;
+	padding-left: 6px;
+	margin: 0px;
+	color: #F1A21F;
+}
+.topSeciliButon{
+	padding-top: 2px;
+	padding-bottom: 4px;
+	padding-right: 6px;
+	padding-left: 6px;
+	border-top-style: solid;
+	border-left-style: solid;
+	border-right-style: solid;
+	margin-top: -3px;
+	margin-right: -6px;
+	margin-bottom: -4px;
+	margin-left: -6px;
+	border-width: 2px;
+	border-color: #F1A21F;
+	background-color: #282828;
+	color: #F1A21F;
+}
+.yanMenu{
+	vertical-align: top;
+	color: #F1A21F;
+}
+.solButon{
+	text-align: left;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-weight: bold;
+	font-size: 12px;
+	background-color: #000000;
+	padding-top: 4px;
+	padding-right: 6px;
+	padding-bottom: 4px;
+	padding-left: 6px;
+	margin: 0px;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	vertical-align: top;
+	border-width: 1px;
+	border-color: #F1A21F;
+	color: #F1A21F;
+}
+.solHeaderButon{
+	text-align: center;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-weight: bold;
+	font-size: 13px;
+	background-color: #F1A21F;
+	padding-top: 4px;
+	padding-right: 6px;
+	padding-bottom: 4px;
+	padding-left: 6px;
+	margin: 0px;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	vertical-align: top;
+	border-width: 1px;
+	color: #000000;
+	border-color: #F1A21F;
+}
+.solSeciliButon{
+	text-align: left;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-weight: bold;
+	font-size: 12px;
+	background-color: #282828;
+	padding-top: 4px;
+	padding-right: 6px;
+	padding-bottom: 4px;
+	padding-left: 6px;
+	margin: 0px;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	vertical-align: top;
+	border-width: 1px;
+	border-color: #F1A21F;
+	color: #F1A21F;
+}
+.baslik{
+	text-align: center;
+	font-size: 16px;
+	font-weight: bold;
+}
+.subBaslik{
+	text-align: center;
+	font-size: 14px;
+	font-weight: bold;
+}
+.icerik{
+	vertical-align: top;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 11px;
+	background-color: #282828;
+	text-align: left;
+	padding-top: 5px;
+	padding-right: 8px;
+	padding-bottom: 8px;
+	padding-left: 8px;
+	margin: 0px;
+	border-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-color: #F1A21F;
+	line-height: 17px;
+	color: #F1A21F;
+}
+.altYazi{
+	text-align: center;
+	border-width: 1px;
+	border-top-style: solid;
+	border-color: #F1A21F;
+	background-color: #000000;
+	margin-top: 0px;
+	margin-right: -8px;
+	margin-bottom: -8px;
+	margin-left: -8px;
+	padding-bottom: 8px;
+	padding-top: 5px;
+}
