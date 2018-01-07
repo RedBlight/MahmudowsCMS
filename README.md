@@ -1,7 +1,7 @@
 # MahmudowsCMS
 A very simple and primitive content management system I made very very earlier, probably in 2012 if I remember correctly. But it still does the work. It doesn't use a database and directly store all the data in plain text files and directories. I still use it in my website.
 
-## How to use?
+## How to set it up?
 1) Put all the files in your server.
 2) Using a text editor, edit "admin.php", follow the instructions there. You need to write down FTP host, username, password and root directory.
 3) Again, using a text editor, change the password in "MCMSR/secured/pass.txt". *Yep, it's stored as a plaintext :), but it's permissions are gonna be set to prevent anyone looking at it, except the server admin.*
