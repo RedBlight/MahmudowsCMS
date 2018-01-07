@@ -1,169 +1,326 @@
-a:link {
-	color: #F1A21F;
-	text-decoration:none;
-}
-a:visited {
-	color: #F1A21F;
-	text-decoration:none;
-}
-a:hover {
-	color: #FFCA51;
-	text-decoration:none;
-}
-a:active {
-	color: #F1A21F;
-	text-decoration:none;
-}
-body{
-	text-align: center;
+@charset "utf-8";
+/* Z INDEX LIST
+
+*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/* CSS RESET
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
 	margin: 0px;
 	padding: 0px;
-	background-image: url(/MCMSR/img/seffaf.png);
+	border: 0px;
+	text-decoration: none;
+	font-size: 100%;
+	line-height: 125%;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section { display:block; }
+ol, ul { list-style:none; }
+blockquote, q { quotes:none; }
+blockquote:before, blockquote:after,
+q:before, q:after { content:''; content:none; }
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/* MAIN
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+html
+{
+	-webkit-text-size-adjust: none;
+}
+
+body
+{
+	min-width: 960px;
+	text-align: center;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	word-break: normal;
+	word-wrap: break-word;
+	background-image: url(/MCMSR/img/signal.png);
 	background-repeat: repeat-x;
-	background-color: #000000;
-	color: #F1A21F;
+	background-color: #DDDDDD;
 }
-.topMenu{
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/* TOP
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+.logo
+{
+	min-width: 960px;
 	margin: 0px;
-	font-family: Georgia, "Times New Roman", Times, serif;
-	font-weight: bold;
-	font-size: 17px;
-	background-color: #000000;
-	padding-top: 4px;
-	padding-right: 0px;
-	padding-bottom: 4px;
-	padding-left: 0px;
-	border-top-style: solid;
-	border-bottom-style: solid;
+	padding: 0px;
+	border: none;
 	text-align: center;
-	border-width: 2px;
-	border-top-color: #000000;
-	border-bottom-color: #F1A21F;
-	color: #F1A21F;
+	line-height: 0px;
 }
-.topButon{
-	border-left-width: 1px;
-	padding-top: 4px;
-	padding-bottom: 4px;
-	padding-right: 3px;
-	padding-left: 6px;
+
+.topmenu
+{
+	min-width: 960px;
 	margin: 0px;
-	color: #F1A21F;
+	padding: 0px;
+	border: none;
+	border-bottom: 1px solid #000000;
+	background-color: #000000;
+	text-align: center;
 }
-.topSeciliButon{
-	padding-top: 2px;
-	padding-bottom: 4px;
-	padding-right: 6px;
-	padding-left: 6px;
-	border-top-style: solid;
-	border-left-style: solid;
-	border-right-style: solid;
-	margin-top: -3px;
-	margin-right: -6px;
-	margin-bottom: -4px;
-	margin-left: -6px;
-	border-width: 2px;
-	border-color: #F1A21F;
-	background-color: #282828;
-	color: #F1A21F;
+
+.topmenu .btn, .topmenu .btn-in
+{
+	display: inline-block;
+	margin: 0px;
+	padding: 5px 15px 5px 15px;
+	background-color: #000000;
+	font-weight: bold;
+	color: #CCCCCC;
+	border: none;
 }
-.yanMenu{
+
+.topmenu .btn:hover
+{
+	color: #FFFFFF;
+}
+
+.topmenu .btn-in
+{
+	background-color: #333333;
+	color: #FFFFFF;
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/* CONTAINERS
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+.container
+{
+	min-width: 960px;
+	margin: 0px;
+	padding: 0px;
+	border: none;
+	text-align: center;
 	vertical-align: top;
-	color: #F1A21F;
 }
-.solButon{
+
+.container-right
+{
+	display: inline-block;
+	min-width: 180px;
+	max-width: 180px;
+	width: 180px;
+	margin: 0px;
+	padding: 0px;
+	border: none;
+	text-align: center;
+	vertical-align: top;
+}
+
+.container-left
+{
+	display: inline-block;
+	min-width: 179px;
+	max-width: 179px;
+	width: 179px;
+	margin: 0px -1px 0px 0px;
+	padding: 0px;
+	border: 1px solid #000000;
+	border-width: 0px 1px 1px 1px;
+	text-align: center;
+	vertical-align: top;
+}
+
+.container-mid
+{
+	display: inline-block;
+	min-width: 598px;
+	max-width: 598px;
+	width: 598px;
+	margin: 0px;
+	padding: 0px;
+	border: 1px solid #000000;
+	border-width: 0px 1px 1px 1px;
+	text-align: center;
+	vertical-align: top;
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/* CONTAINER - LEFT
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+.container-left .grouper
+{
+	margin: 0px;
+	padding: 5px;
+	border: 0px;
+	min-width: 169px;
+	max-width: 169px;
+	width: 169px;
+	text-align: center;
+	color: #FFFFFF;
+	background-color: #000000;
+}
+
+.container-left .btn
+{
+	margin: 0px;
+	padding: 5px 5px 5px 5px;
+	border: 0px;
+	min-width: 169px;
+	max-width: 169px;
+	width: 169px;
 	text-align: left;
-	font-family: Georgia, "Times New Roman", Times, serif;
+	color: #282828;
 	font-weight: bold;
-	font-size: 12px;
-	background-color: #000000;
-	padding-top: 4px;
-	padding-right: 6px;
-	padding-bottom: 4px;
-	padding-left: 6px;
-	margin: 0px;
-	border-bottom-style: solid;
-	border-left-style: solid;
-	vertical-align: top;
-	border-width: 1px;
-	border-color: #F1A21F;
-	color: #F1A21F;
+	background-color: #CCCCCC;
+	font-size: 0.8em;
 }
-.solHeaderButon{
-	text-align: center;
-	font-family: Georgia, "Times New Roman", Times, serif;
-	font-weight: bold;
-	font-size: 13px;
-	background-color: #F1A21F;
-	padding-top: 4px;
-	padding-right: 6px;
-	padding-bottom: 4px;
-	padding-left: 6px;
+
+.container-left .btn-in
+{
 	margin: 0px;
-	border-bottom-style: solid;
-	border-left-style: solid;
-	vertical-align: top;
-	border-width: 1px;
+	padding: 5px 5px 5px 5px;
+	border: 0px;
+	min-width: 169px;
+	max-width: 169px;
+	width: 169px;
+	text-align: left;
+	font-weight: bold;
+	color: #CCCCCC;
+	background-color: #282828;
+	font-size: 0.8em;
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/* CONTAINER - MID
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+.container-mid .content-wrap
+{
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+	min-width: 598px;
+	max-width: 598px;
+	width: 598px;
 	color: #000000;
-	border-color: #F1A21F;
+	background-color: #FFFFFF; 
 }
-.solSeciliButon{
+
+.container-mid .title
+{
+	min-width: 588px;
+	max-width: 588px;
+	width: 588px;
+	font-size: 1.1em;
+	font-weight: bold;
+	text-align: center;
+	padding: 5px 5px 0px 5px;
+}
+
+.container-mid .title-sub
+{
+	min-width: 588px;
+	max-width: 588px;
+	width: 588px;
+	font-size: 1.0em;
+	text-align: center;
+	padding: 0px 5px 5px 5px;
+	font-weight: bold;
+}
+
+.container-mid .content
+{
+	min-width: 568px;
+	max-width: 568px;
+	width: 568px;
+	font-size: 0.9em;
 	text-align: left;
-	font-family: Georgia, "Times New Roman", Times, serif;
-	font-weight: bold;
-	font-size: 12px;
-	background-color: #282828;
-	padding-top: 4px;
-	padding-right: 6px;
-	padding-bottom: 4px;
-	padding-left: 6px;
-	margin: 0px;
-	border-bottom-style: solid;
-	border-left-style: solid;
-	vertical-align: top;
-	border-width: 1px;
-	border-color: #F1A21F;
-	color: #F1A21F;
+	padding: 5px 15px 20px 15px;
 }
-.baslik{
-	text-align: center;
-	font-size: 16px;
-	font-weight: bold;
-}
-.subBaslik{
-	text-align: center;
-	font-size: 14px;
-	font-weight: bold;
-}
-.icerik{
-	vertical-align: top;
-	font-family: Verdana, Geneva, sans-serif;
-	font-size: 11px;
-	background-color: #282828;
-	text-align: left;
-	padding-top: 5px;
-	padding-right: 8px;
-	padding-bottom: 8px;
-	padding-left: 8px;
-	margin: 0px;
-	border-width: 1px;
-	border-right-style: solid;
-	border-bottom-style: solid;
-	border-left-style: solid;
-	border-color: #F1A21F;
-	line-height: 17px;
-	color: #F1A21F;
-}
-.altYazi{
-	text-align: center;
-	border-width: 1px;
-	border-top-style: solid;
-	border-color: #F1A21F;
+
+.container-mid .footer
+{
+	min-width: 588px;
+	max-width: 588px;
+	width: 588px;
+	padding: 5px 5px 5px 5px;
 	background-color: #000000;
-	margin-top: 0px;
-	margin-right: -8px;
-	margin-bottom: -8px;
-	margin-left: -8px;
-	padding-bottom: 8px;
-	padding-top: 5px;
+	color: #FFFFFF;
+	font-size: 0.7em;
+	text-align: center;
 }
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/* ADDITIONAL
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+.content .person-item
+{
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+	text-align: center;
+}
+
+.content .person-item .person-photo
+{
+	display: inline-block;
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+	min-width: 150px;
+	max-width: 150px;
+	width: 150px;
+	vertical-align: top;
+	line-height: 0px;
+}
+
+.content .person-item .person-info
+{
+	display: inline-block;
+	margin: 0px;
+	padding: 5px 5px 5px 15px;
+	border: 0px;
+	min-width: 398px;
+	max-width: 398px;
+	width: 398px;
+	vertical-align: top;
+	text-align: left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

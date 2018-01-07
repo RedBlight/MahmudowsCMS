@@ -1,84 +1,205 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<?
+ini_set('display_errors', 1);
+
+function formatUrl( $string, $separator = '-' )
+{
+    $accents_regex = '~&([a-z]{1,2})(?:acute|cedil|circ|grave|lig|orn|ring|slash|th|tilde|uml);~i';
+    $special_cases = array( '&' => 'and', "'" => '');
+    $string = mb_strtolower( trim( $string ), 'UTF-8' );
+    $string = str_replace( array_keys($special_cases), array_values( $special_cases), $string );
+    $string = preg_replace( $accents_regex, '$1', htmlentities( $string, ENT_QUOTES, 'UTF-8' ) );
+    $string = preg_replace("/[^a-z0-9]/u", "$separator", $string);
+    $string = preg_replace("/[$separator]+/u", "$separator", $string);
+    return $string;
+}
+
+$currentMenuName = "";
+$currentCateName = "";
+$currentPageName = "";
+$currentMenuId = 1;
+$currentCateId = 1;
+$currentPageId = 1;
+
+$urlList = explode( "/", $_SERVER[ 'REQUEST_URI' ] );
+if( isset( $urlList[ 1 ] ) )
+{
+	$currentMenuName = explode( "?", $urlList[ 1 ] );
+	$currentMenuName = $currentMenuName[ 0 ];
+}
+if( isset( $urlList[ 2 ] ) )
+{
+	$currentCateName = explode( "?", $urlList[ 2 ] );
+	$currentCateName = $currentCateName[ 0 ];
+}
+if( isset( $urlList[ 3 ] ) )
+{
+	$currentPageName = explode( "?", $urlList[ 3 ] );
+	$currentPageName = $currentPageName[ 0 ];
+}
+
+$menuLabelList = array();
+$menuNameList = array();
+$cateLabelList = array();
+$cateNameList = array();
+$pageLabelList = array();
+$pageNameList = array();
+
+$filepath = "MCMSR/site/menucount.txt";
+$menuN = file_exists( $filepath ) ? intval( file_get_contents( $filepath ) ) : 0;
+for( $i = 1; $i <= $menuN; $i++ )
+{
+	$filepath = "MCMSR/site/" . $i . "/label.txt";
+	$menuLabelList[ $i ] = file_exists( $filepath ) ? file_get_contents( $filepath ) : "";
+	$menuNameList[ $i ] = formatUrl( $menuLabelList[ $i ] );
+	
+	if( $menuNameList[ $i ] == $currentMenuName )
+	{
+		$currentMenuId = $i;
+	}
+	
+	$cateLabelList[ $i ] = array();
+	$cateNameList[ $i ] = array();
+	$pageLabelList[ $i ] = array();
+	$pageNameList[ $i ] = array();
+	
+	$filepath = "MCMSR/site/" . $i . "/catecount.txt";
+	$cateN = file_exists( $filepath ) ? intval( file_get_contents( $filepath ) ) : 0;
+	for( $j = 1; $j <= $cateN; $j++ )
+	{
+		$filepath = "MCMSR/site/" . $i . "/" . $j . "/label.txt";
+		$cateLabelList[ $i ][ $j ] = file_exists( $filepath ) ? file_get_contents( $filepath ) : "";
+		$cateNameList[ $i ][ $j ] = formatUrl( $cateLabelList[ $i ][ $j ] );
+	
+		if( $currentMenuId == $i && $cateNameList[ $i ][ $j ] == $currentCateName )
+		{
+			$currentCateId = $j;
+		}
+		
+		$pageLabelList[ $i ][ $j ] = array();
+		$pageNameList[ $i ][ $j ] = array();
+		
+		$filepath = "MCMSR/site/" . $i . "/" . $j . "/pagecount.txt";
+		$pageN = file_exists( $filepath ) ? intval( file_get_contents( $filepath ) ) : 0;
+		for( $k = 1; $k <= $pageN; $k++ )
+		{
+			$filepath = "MCMSR/site/" . $i . "/" . $j . "/" . $k . "/label.txt";
+			$pageLabelList[ $i ][ $j ][ $k ] = file_exists( $filepath ) ? file_get_contents( $filepath ) : "";
+			$pageNameList[ $i ][ $j ][ $k ] = formatUrl( $pageLabelList[ $i ][ $j ][ $k ] );
+	
+			if( $currentMenuId == $i && $currentCateId == $j && $pageNameList[ $i ][ $j ][ $k ] == $currentPageName )
+			{
+				$currentPageId = $k;
+			}
+		}
+	}
+}
+
+$filepath = "MCMSR/site/menucount.txt";
+$menuCount = file_exists( $filepath ) ? intval( file_get_contents( $filepath ) ) : 0;
+$filepath = "MCMSR/site/" . $currentMenuId . "/catecount.txt";
+$cateCount = file_exists( $filepath ) ? intval( file_get_contents( $filepath ) ) : 0;
+$filepath = "MCMSR/site/" . $currentMenuId . "/" . $currentCateId . "/pagecount.txt";
+$pageCount = file_exists( $filepath ) ? intval( file_get_contents( $filepath ) ) : 0;
+$menuLabel = $menuLabelList[ $currentMenuId ];
+$cateLabel = $cateLabelList[ $currentMenuId ][ $currentCateId ];
+$pageLabel = $pageLabelList[ $currentMenuId ][ $currentCateId ][ $currentPageId ];
+
+?>
+
+<!DOCTYPE html> 
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Mahmudows</title>
-<link rel="shortcut icon" href="favicon.ico">
-<link rel="stylesheet" type="text/css" href="MCMSR/css/index.css" />
-<meta name="keywords" content="mahmut, akkuş, mahmudows, makaleler, programlama, oyunlar, netherlord" />
-<meta http-equiv="Content-Language" content="tr-TR" />
-<meta name="author" content="Mahmut Akkuş" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">
+	<meta http-equiv="content-language" content="en" />
+	
+	<title> <? echo $pageLabel; ?> - MahmudowsCMS </title>
+	<base href="/" />
+	
+	<meta name="keywords" content="mahudows, mahmudowsCMS, content management system">
+	<meta name="description" content="A very simple content management system.">
+	<meta name="author" content="Mahmut Akkuş">
+	
+	<link rel="shortcut icon" href="/MCMSR/img/favicon.png">
+	<link rel="icon" type="image/png" href="/MCMSR/img/favicon.png">
+	<link rel="stylesheet" type="text/css" href="/MCMSR/css/index.css" />
+
 </head>
 
 <body>
 
-<?php 
-$menu = ($_GET[menu] == null) ? 1 : $_GET[menu];
-$cate = ($_GET[cate] == null) ? 1 : $_GET[cate];
-$page = ($_GET[page] == null) ? 1 : $_GET[page];
-$menuCount = intval(file_get_contents("MCMSR/site/menucount.txt"));
-$cateCount = intval(file_get_contents("MCMSR/site/".$menu."/catecount.txt"));
-$pageCount = intval(file_get_contents("MCMSR/site/".$menu."/".$cate."/pagecount.txt"));
-$menuLabel = file_get_contents("MCMSR/site/".$menu."/label.txt");
-$cateLabel = file_get_contents("MCMSR/site/".$menu."/".$cate."/label.txt");
-$pageLabel = file_get_contents("MCMSR/site/".$menu."/".$cate."/".$page."/label.txt");
-?>
 
-<img src="MCMSR/img/logo.png" width="800" height="105"/><br>
-<img src="MCMSR/img/siluet.png" width="828" height="59"/><br>
+<div class="logo">
+  <img src="/MCMSR/img/logo.png" />
+</div>
 
-<p class="topMenu">
+
+<div class="topmenu">
 <?
-for($i=1; $i<=$menuCount; $i++)
+for( $i = 1; $i <= $menuCount; $i++ )
 {
-	if($i==$menu) { echo '<span class="topButon"><span class="topSeciliButon"><a href="index.php?menu='.$i.'">'.file_get_contents("MCMSR/site/".$i."/label.txt").'</a></span></span>'; }
-	else { echo '<span class="topButon"><a href="index.php?menu='.$i.'">'.file_get_contents("MCMSR/site/".$i."/label.txt").'</a></span>'; }
+	$linkUrl = "/" . $menuNameList[ $i ];
+	$linkLabel = $menuLabelList[ $i ];
+	$btnClass = $i === $currentMenuId ? "btn-in" : "btn";
+	echo '<a href="' . $linkUrl . '"><div class="' . $btnClass . '">' . $linkLabel . '</div></a>';
 }
 ?>
-</p>
+</div>
 
-<table align="center" width="960" border="0" cellspacing="0" cellpadding="0">
-<tr>
 
-<td class="yanMenu" width="180">
-<?php
-for($i=1; $i<=$cateCount; $i++)
-{
-	echo '<p class="solHeaderButon">'.file_get_contents("MCMSR/site/".$menu."/".$i."/label.txt").'</p>';
-	$pageCounti = intval(file_get_contents("MCMSR/site/".$menu."/".$i."/pagecount.txt"));
-	for($ii=1; $ii<=$pageCounti; $ii++)
+<div class="container">
+	<div class="container-left">
+	<?
+	for( $i = 1; $i <= $cateCount; $i++ )
 	{
-		if($ii==$page && $i==$cate) { echo '<p class="solSeciliButon"><a href="index.php?menu='.$menu.'&cate='.$i.'&page='.$ii.'">&gt; '.file_get_contents("MCMSR/site/".$menu."/".$i."/".$ii."/label.txt").'</a></p>'; }
-		else { echo '<p class="solButon"><a href="index.php?menu='.$menu.'&cate='.$i.'&page='.$ii.'">&#8226; '.file_get_contents("MCMSR/site/".$menu."/".$i."/".$ii."/label.txt").'</a></p>'; }
+		$cateLabel = $cateLabelList[ $currentMenuId ][ $i ];
+		echo '<div class="grouper">' . $cateLabel . '</div>';
+		$filepath = "MCMSR/site/".$currentMenuId."/".$i."/pagecount.txt";
+		$pageCountCate = file_exists( $filepath ) ? intval( file_get_contents( $filepath ) ) : 0;
+		for( $j = 1; $j <= $pageCountCate; $j++ )
+		{
+			$linkUrl = '/' . $menuNameList[ $currentMenuId ] . '/' . $cateNameList[ $currentMenuId ][ $i ] . '/' . $pageNameList[ $currentMenuId ][ $i ][ $j ];
+			$linkLabel = $pageLabelList[ $currentMenuId ][ $i ][ $j ];
+			$btnClass = ( $j === $currentPageId && $i === $currentCateId ) ? "btn-in" : "btn";
+			$btnMarker = ( $j === $currentPageId && $i === $currentCateId ) ? "&gt;" : "&#8226;";
+			echo '<a href="' . $linkUrl . '"><div class="' . $btnClass . '">' . $btnMarker . ' ' . $linkLabel . '</div></a>';
+		}
 	}
-}
-?>
-</td>
+	?>
+	</div><div class="container-mid">
 
-<td class="icerik" width="600">
-<?php
-echo '<div class="baslik">'.$cateLabel.'</div>';
-echo '<div class="subBaslik">-- '.$pageLabel.' --</div><br/>';
-include("MCMSR/site/".$menu."/".$cate."/".$page."/content.txt");
-?>
-<br><br><p class="altYazi"><a href="http://www.mahmudows.com">&#169; 2012 - Mahmut Akkuş</a></p>
-</td>
+		<div class="content-wrap">
+		
+			<div class="title"><? echo $cateLabelList[ $currentMenuId ][ $currentCateId ]; ?></div>
+			<div class="title-sub">-- <? echo $pageLabelList[ $currentMenuId ][ $currentCateId ][ $currentPageId ]; ?> --</div>
+			<div class="content">
+			<?
+				$filepath = "MCMSR/site/" . $currentMenuId . "/" . $currentCateId . "/" . $currentPageId . "/content.txt";
+				if( file_exists( $filepath ) )
+				{
+					include( $filepath );
+				}
+			?>
+			</div>
+		
+		</div>
+		
+		<div class="footer">&copy; 2012 MahmudowsCMS - Mahmut Akkuş </div>
 
-<td class="yanMenu" width="180">
-\********************/<br>
-\*****************/<br>
-\**************/<br>
-\***********/<br>
-\********/<br>
-REKLAM<br>ALANI<br>
-/********\<br>
-/***********\<br>
-/**************\<br>
-/*****************\<br>
-/********************\<br>
-</td>
-    
-</tr>
-</table>
+	</div><div class="container-right">
+	<a href="https://github.com/RedBlight/MahmudowsCMS"><img src="/MCMSR/img/github.png" /></a>
+	</div>
+</div>
+
+
+
+
+
+
+
+
 </body>
 </html>

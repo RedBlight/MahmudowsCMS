@@ -21,11 +21,11 @@ function getTime()
 $start = getTime();
  
 // Defining "Mahmudows CMS Root"
-$MCMSR = "httpdocs/MCMSR"; // Buraya MCMSR adlı klasörün sitenizde bulunacağı yolu yazacaksınız
+$MCMSR = "/public_html/mySite/MCMSR"; // !!! REPLACE: FTP PATH TO THE MCMSR FOLDER !!!
 
 // Creating FTP stream for password system
-$ftpStream = ftp_connect("ftp.benimsitem.com"); // Buraya FTP sunucunuzu yazacaksınız
-ftp_login($ftpStream, "FTP-admin", "FTP-pass"); // Buraya da FTP sunucunuzun kullanıcı bilgilerini gireceksiniz
+$ftpStream = ftp_connect("ftp.mySite.com"); // !!! REPLACE: FTP HOST !!!
+ftp_login($ftpStream, "myFtpUser", "myFtpPass"); // !!! REPLACE: FTP CREDENTIALS !!!
 ftp_raw($ftpStream, "SITE CHMOD 0777 ".$MCMSR."/secured");
 
 // Reading password from file
@@ -95,19 +95,29 @@ function DeleteDirectoryFTP($ftpStream, $deletePath)
 	$statusNext = false;
 	$currentFolder = $deletePath;
 	$list = ftp_rawlist($ftpStream, $deletePath, true);
+	
+	$emptyCount = 0;
 	foreach($list as $current)
 	{
-		if(empty($current))
-		{
-			$statusNext = true;
-			continue;
-		}
-		if($statusNext === true)
+		
+		if($emptyCount == 2)
 		{
 			$currentFolder = substr($current, 0, -1);
-			$statusNext = false;
+			$emptyCount = 0;
 			continue;
 		}
+		
+		if(empty($current))
+		{
+			$emptyCount += 1;
+			continue;
+		}
+		else
+		{
+			$emptyCount = 0;
+		}
+		
+		
 		$split = preg_split('[ ]', $current, 9, PREG_SPLIT_NO_EMPTY);
 		$entry = $split[8];
 		$isDir = ($split[0]{0} === 'd') ? true : false;
@@ -851,7 +861,7 @@ Yeni admin şifresini girin:<br/>
 		fwrite($passwordInFiledottxt, $_POST[newp]);
 		fclose($passwordInFiledottxt);
 		$passwordInFile = file_get_contents("MCMSR/secured/pass.txt");
-		$cmspageReport="<span style=\"color:green\">Şifreyi değiştir de senden başkası demoyu kullanamasın de'mi çakaal ;)</center>"; 
+		$cmspageReport="<span style=\"color:green\">Şifre başarılı bir şekilde değiştirilmiştir.</center>"; 
 	}
 	else if($_GET[action]==1)
 	{
