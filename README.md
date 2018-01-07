@@ -9,3 +9,9 @@ A very simple and primitive content management system I made very very earlier, 
 5) In the admin panel, you can add 1st level categories, 2nd level sub-categories to them, and pages to the sub categories. You can delete or modify existing ones. Oh, you can also change the password from there.
 6) Changes will appear immediately in "yoursite.com".
 7) To change the appearance of your site, you have to manually edit "index.php", images, .css files, etc.
+
+### Here is a screenshot:
+![Alt text](img/ss1.png "PHP")
+
+### Here is a screenshot of admin panel:
+![Alt text](img/ss2.png "PHP")
